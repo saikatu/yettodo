@@ -1,10 +1,15 @@
 require 'date'
 
-def parse(s)
+def parse(s, username)
   result = Hash.new
   text = String.new(s)
   
   s.scan(/\S+/) do |w|
+  
+    #removing our user mentions
+    w.scan(/(@#{Regexp.escape(username)})/i) do |match|
+      text.sub!(/\s?#{Regexp.escape(match[0])}\s?/, " ")
+    end
   
     #search for context
     w.scan(/(~(\S+))/i) do |match|
@@ -53,5 +58,3 @@ def parse(s)
   result["text"] = text.strip
   return result
 end
-
-print parse("123 ~456 =31.12.2011 <12.12 789 ~adc")
