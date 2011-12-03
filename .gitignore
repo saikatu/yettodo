@@ -14,6 +14,9 @@
 /log/*.log
 /tmp
 /test
+<<<<<<< HEAD
 *.class
 *.pyc
 *.pyo
+=======
+>>>>>>> 6363e5bf3bbd2f3efb8e83b27263c2c273ff3de7
